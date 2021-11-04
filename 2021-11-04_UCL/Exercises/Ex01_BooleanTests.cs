@@ -19,7 +19,7 @@ namespace Exercises
             bool result = CanBuyAlcohol(person);
 
             // Assert
-            throw new NotImplementedException();
+            result.Should().BeTrue();
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Exercises
             bool result = CanBuyAlcohol(person);
 
             // Assert
-            throw new NotImplementedException();
+            result.Should().BeFalse();
         }
 
         #region Helpers

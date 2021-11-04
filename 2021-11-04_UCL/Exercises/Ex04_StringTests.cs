@@ -16,7 +16,7 @@ namespace Exercises
             string starSign = person.GetStarSign();
 
             // Assert
-            throw new NotImplementedException();
+            starSign.Should().NotBeEmpty();
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Exercises
             string frameworkName = GetTestFramework();
 
             // Assert
-            throw new NotImplementedException();
+            frameworkName.Should().BeEquivalentTo(expectedFrameworkName);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Exercises
             string[] nephews = GetNephewsOfDonaldDuck();
 
             // Assert
-            throw new NotImplementedException();
+            nephews.Should().Contain(expectedNephew);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Exercises
             string alphabet = GetDanishAlphabeth();
 
             // Assert
-            throw new NotImplementedException();
+            alphabet.Should().HaveLength(expectedLength);
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Exercises
             string errorMessage = GetErrorMessage();
 
             // Assert
-            throw new NotImplementedException();
+            errorMessage.Should().MatchRegex(".*" + "Foo" + ".*" + "Bar" + ".*");
         }
 
         #region Helpers

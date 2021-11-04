@@ -18,7 +18,7 @@ namespace Exercises
             Dictionary<int, string> leetSpeak = GetLeetSpeak();
 
             // Assert
-            throw new NotImplementedException();
+            leetSpeak.Should().ContainKey(expectedKey).WhoseValue.Equals(expectedValue);
         }
 
         #region Helpers
