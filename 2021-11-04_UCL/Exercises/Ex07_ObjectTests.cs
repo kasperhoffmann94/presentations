@@ -23,7 +23,7 @@ namespace Exercises
             Person result = GetPerson();
 
             // Assert
-            throw new NotImplementedException();
+            result.Should().BeEquivalentTo(expected, options => options.ComparingByMembers<Person>());
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Exercises
             Machine instance = GetInstance();
 
             // Assert
-            throw new NotImplementedException();
+            instance.Should().BeEquivalentTo(expectedInstance, options => options.Excluding(p => p.Id));
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace Exercises
             ISuperComputer computer = GetSuperComputer();
 
             // Assert
-            throw new NotImplementedException();
+            computer.Should().NotBeEquivalentTo(expected, options => options.RespectingRuntimeTypes());
         }
 
         [Fact]
@@ -69,6 +69,7 @@ namespace Exercises
             {
                 // Fill out the anonymous type, to match
                 // Inner.Inner.MyProperty = 42
+
             };
 
             // Act
@@ -94,13 +95,13 @@ namespace Exercises
             AnnoyingClass result = GetResult();
 
             // Assert
-            throw new NotImplementedException();
+            result.Should().BeEquivalentTo(expected, options => options.ExcludingFields().Including(p => p.name));
         }
 
         [Fact]
         public void Using_WhenTypeIs()
         {
-            // * The model and its mapped version should be equivalent 
+            // * The model and its mapped version should be equivalent
             // * and DateTimes may vary up to 1 second.
 
             // Arrange
@@ -110,13 +111,16 @@ namespace Exercises
             object mappedModel = ModelMapper.Map(dasModel);
 
             // Assert
-            throw new NotImplementedException();
+            mappedModel.Should().BeEquivalentTo(dasModel, options => options.Using<DateTime>(ctx =>
+            {
+                ctx.Subject.Should().BeSameDateAs(ctx.Expectation);
+            }).WhenTypeIs<DateTime>());
         }
 
         [Fact]
         public void Using_When()
         {
-            // * The model and its mapped version should be equivalent 
+            // * The model and its mapped version should be equivalent
             // * and the Created property may vary up to 1 second.
 
             // Arrange
@@ -126,7 +130,10 @@ namespace Exercises
             object mappedModel = ModelMapper.Map(dasModel);
 
             // Assert
-            throw new NotImplementedException();
+            /*mappedModel.Should().BeEquivalentTo(dasModel, options => options.Using<DateTime>(ctx =>
+            {
+                ctx.Subject.Should().BeSameDateAs(ctx.Expectation);
+            }).When());*/
         }
 
         #region Helpers
